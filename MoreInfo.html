@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main">
+    <div class="title">
+        <h2 class="logo">Kathy's Travel Blog</h2>
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Service.html">Service</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="MoreInfo.html">More Info</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h1>More Info</h1>
+<form id="registrationForm">
+    <div class="NewSug">
+        <h2>Sign Up</h2>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="tel" id="phone" name="phone" placeholder="Phone">
+        <button type="submit" class="btnn">Register</button>
+    </div>
+</form>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://github.com/kat2552" target="_blank" class="icon discord"><img src="github.svg" alt="Github"></a>
+        <a href="https://www.instagram.com/beckeepheebs/" target="_blank" class="icon instagram"><img src="ig.svg" alt="Instagram"></a>
+        <a href="https://www.facebook.com/KittyGoesMeow101/" target="_blank" class="icon tiktok"><img src="fbsvg.svg" alt="Facebook"></a>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var phone = document.getElementById("phone").value;
+
+        var formData = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            phone: phone
+        };
+
+
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        users.push(formData);
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Registration successful!");
+
+        document.getElementById("registrationForm").reset();
+    });
+</script>
+
+</body>
+</html>
